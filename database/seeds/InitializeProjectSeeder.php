@@ -50,6 +50,7 @@ class InitializeProjectSeeder extends Seeder
 
         //权限
         $permissions = self::file_to_arr($permission_data_file_name);
+        $sort = 0;
         foreach ($permissions as $pem1) {
             //生成一级权限
             $p1 = Permission::create([
@@ -57,6 +58,7 @@ class InitializeProjectSeeder extends Seeder
                 'display_name' => $pem1['display_name'],
                 'route' => $pem1['route']??'',
                 'icon' => $pem1['icon']??1,
+                'sort' => $sort++,
             ]);
             //为角色添加权限
             $role->givePermissionTo($p1);
@@ -72,6 +74,7 @@ class InitializeProjectSeeder extends Seeder
                         'route' => $pem2['route']??1,
                         'icon' => $pem2['icon']??1,
                         'type' => isset($pem2['type']) ? $pem2['type'] : 2,
+                        'sort' => $sort++,
                     ]);
                     //为角色添加权限
                     $role->givePermissionTo($p2);
@@ -87,6 +90,7 @@ class InitializeProjectSeeder extends Seeder
                                 'route' => $pem3['route']??'',
                                 'icon' => $pem3['icon']??1,
                                 'type' => isset($pem2['type']) ? $pem2['type'] : 2,
+                                'sort' => $sort++,
                             ]);
                             //为角色添加权限
                             $role->givePermissionTo($p3);

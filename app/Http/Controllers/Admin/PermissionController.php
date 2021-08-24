@@ -185,7 +185,7 @@ class PermissionController extends Controller
      */
     public function menu() {
         header('content-type:application/json');
-        $menus = Permission::with(['childs'])->where('parent_id',0)->orderBy('sort','asc')->get();
+        $menus = Permission::with(['childs'])->where('parent_id',0)->orderBy('sort','desc')->get();
         // dd($menus->toArray());
         $guard = Auth::guard('web')->user();
         $menuArr = [];
