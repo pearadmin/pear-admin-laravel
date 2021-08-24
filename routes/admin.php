@@ -79,30 +79,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         //删除
         Route::delete('article/destroy', 'ArticleController@destroy')->name('admin.article.destroy');
     });
-    //关于我们
-    Route::group(['middleware' => []], function () {
-        Route::get('aboutus', 'AboutUsController@index')->name('admin.aboutus');
-        //添加
-        Route::get('aboutus/create', 'AboutUsController@create')->name('admin.aboutus.create');
-        Route::post('aboutus/store', 'AboutUsController@store')->name('admin.aboutus.store');
-        //编辑
-        Route::put('aboutus/update', 'AboutUsController@update')->name('admin.aboutus.update');
-        //删除
-        Route::delete('aboutus/destroy', 'AboutUsController@destroy')->name('admin.aboutus.destroy');
-    });
-    //服务范围
-    Route::group(['middleware' => []], function () {
-        Route::get('service/data', 'ServiceController@data')->name('admin.service.data');
-        Route::get('service', 'ServiceController@index')->name('admin.service');
-        //添加
-        Route::get('service/create', 'ServiceController@create')->name('admin.service.create');
-        Route::post('service/store', 'ServiceController@store')->name('admin.service.store');
-        //编辑
-        Route::get('service/{id}/edit', 'ServiceController@edit')->name('admin.service.edit');
-        Route::put('service/{id}/update', 'ServiceController@update')->name('admin.service.update');
-        //删除
-        Route::delete('service/destroy', 'ServiceController@destroy')->name('admin.service.destroy');
-    });
     //标签管理
     Route::group(['middleware' => []], function () {
         Route::get('tag', 'TagController@index')->name('admin.tag');
