@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Backend\Tag;
 use App\Models\Backend\Role;
 use App\Models\Backend\Config;
 use App\Models\Backend\Category;
@@ -39,6 +40,7 @@ class InitializeProjectSeeder extends Seeder
         $permission_data_file_name = $base_path.'permissions.json';
         $config_data_file_name = $base_path.'configure.json';
         $category_data_file_name = $base_path.'categories.json';
+        $tag_data_file_name = $base_path.'tags.json';
 
         //用户
         $user = User::create(self::file_to_arr($user_data_file_name));
@@ -146,6 +148,17 @@ class InitializeProjectSeeder extends Seeder
                     ]);
                 }
             }
+        }
+
+        //分类
+        $tags =  self::file_to_arr($tag_data_file_name);
+        foreach ($tags as $tag) {
+            //生成分类
+            $p_cate = Tag::create([
+                'name' => $tag['name'],
+                'sort' => $tag['sort'],
+                'type' => $tag['type'],
+            ]);
         }
     }
 
