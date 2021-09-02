@@ -3,8 +3,8 @@
 #### 获取项目代码
 ```shell
 cd web部署目录
-git clone https://code.aliyun.com/wanghongbin/HBAdmin.git
-chmod -R 755 ./HBAdmin
+git clone https://gitee.com/pear-admin/Pear-Admin-Laravel.git
+chmod -R 755 ./Pear-Admin-Laravel
 composer update
 ```
 
@@ -37,7 +37,7 @@ php artisan db:seed         #写入初始化数据
 ### Vhost-Apache配置
 ```text
 <VirtualHost *:80>
-    DocumentRoot "/var/www/html/HBAdmin/public"
+    DocumentRoot "/var/www/html/Pear-Admin-Laravel/public"
     ServerName www.domain.com
     ErrorLog "logs/site1-error.log"
     CustomLog "logs/site1-access.log" common
@@ -54,7 +54,7 @@ php artisan db:seed         #写入初始化数据
 server {
     listen       80;
     server_name  www.domain.com;
-    root         /var/www/html/HBAdmin/public;
+    root         /var/www/html/Pear-Admin-Laravel/public;
     index index.html index.htm index.php;
 
     add_header X-Frame-Options "SAMEORIGIN";
@@ -78,7 +78,7 @@ server {
 
     location ~ .php$ {
         try_files $uri =404;
-        root /var/www/html/HBAdmin/public;
+        root /var/www/html/Pear-Admin-Laravel/public;
         fastcgi_pass 127.0.0.1:9000;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
