@@ -11,6 +11,8 @@
             ue.getContent()
         });
     </script>
+@elseif (config('custom.rich_text_editor') == 'editormd') 
+    <!-- # TODO markdown编辑器  -->
 @else 
     <script type="text/javascript" src="{{asset(U_EDITOR.'ueditor.config.js')}}"></script>
     <script type="text/javascript" src="{{asset(U_EDITOR.'ueditor.all.js')}}"></script>
