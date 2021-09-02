@@ -11,7 +11,7 @@ composer update
 #### 创建数据库
 ```shell
 mysql -uroot -p  #输入密码
-create database data_hbadmin
+create database pear_admin_laravel
 ```
 
 #### 配置数据库
