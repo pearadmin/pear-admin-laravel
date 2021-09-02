@@ -77,6 +77,7 @@ class ConfigController extends Controller
         try{
             foreach ($data as $k => $v){
                 DB::table('config')->where('key',$k)->update(['val'=>$v]);
+                if ($k==='editor') ModifyEnv(['DEFAULT_EDITOR'=>$v]);
             }
             DB::commit();
         }catch (\Exception $exception){

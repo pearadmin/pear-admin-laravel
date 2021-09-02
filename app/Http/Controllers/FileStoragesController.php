@@ -56,15 +56,24 @@ class FileStoragesController extends Controller
 		if (!Redis::exists($filename)) {
 			Redis::setex($filename, Helper::HOUR_IN_SECOND, serialize($resData));
 		}
-		return response()->json([
-			"code"     => 200,
-			"msg"  => '文件上传成功！',
-			"data"     => [
-				'name' => $filename,
-				'original_name' => $original_name,
-				'link' => $storage->url($path),
-			]
-		]);
+
+		if ($request->from && $request->from=='tinymac') {
+			return response()->json([
+				"code" => 0,
+				"msg"  => '文件上传成功！',
+				"data" => $storage->url($path),
+			]);
+		} else {
+			return response()->json([
+				"code" => 200,
+				"msg"  => '文件上传成功！',
+				"data" => [
+					'name' => $filename,
+					'original_name' => $original_name,
+					'link' => $storage->url($path),
+				]
+			]);
+		}
 	}
 
     /**

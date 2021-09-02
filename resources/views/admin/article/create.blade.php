@@ -1,5 +1,14 @@
 @extends('admin.baseform')
 
+@section('style')
+<style type="text/css">
+    .layui-form-label{
+        text-align: left !important;
+        padding: 9px 0 !important;
+    }
+</style>
+@endsection
+
 @section('content')
     <form class="layui-form " action="" method="post">
         <div class="mainBox">
