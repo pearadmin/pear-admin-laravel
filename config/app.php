@@ -178,7 +178,6 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Gouguoyin\LogViewer\LogViewerServiceProvider::class,
 
     ],
 

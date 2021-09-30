@@ -10,10 +10,11 @@
     "require": {
         "php": "^7.2",
         "ext-curl": "*",
+        "arcanedev/log-viewer": "~5.0",
         "caouecs/laravel-lang": "~5.0",
         "fideloper/proxy": "^4.0",
-        "gouguoyin/laravel-log-viewer": "^1.0",
         "intervention/image": "^2.5",
+        "kalnoy/nestedset": "v5.0.5",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "laravolt/avatar": "^4.1",
