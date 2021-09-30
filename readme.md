@@ -11,6 +11,7 @@
 cd web部署目录
 git clone https://gitee.com/pear-admin/Pear-Admin-Laravel.git
 chmod -R 755 ./Pear-Admin-Laravel
+cd ./Pear-Admin-Laravel
 composer update
 ```
 
