@@ -20,17 +20,21 @@ class Permissions extends Migration
              $table->collation = 'utf8mb4_unicode_ci';
             // CONTENT
             $table->increments('id')->nullable(false)->comment('');
+            $table->integer('_rgt')->unsigned()->comment('');
+            $table->integer('_lft')->unsigned()->comment('');
+            $table->integer('parent_id')->unsigned()->nullable()->comment('');
 			$table->string('name', 191)->nullable(false)->comment('');
 			$table->string('guard_name', 191)->nullable(false)->comment('');
 			$table->string('display_name', 191)->nullable(false)->comment('');
 			$table->string('route', 191)->nullable()->default(null)->comment('路由名称');
 			$table->string('icon', 191)->nullable()->default(null)->comment('图标class');
-			$table->integer('parent_id')->nullable(false)->default(0)->comment('');
 			$table->integer('sort')->nullable(false)->default(0)->comment('排序');
-			$table->integer('type')->nullable(false)->default(1)->comment('类型：1按钮，2菜单');
-			$table->timestamp('created_at')->comment('');
+			$table->integer('type')->nullable(false)->default(10)->comment('类型：10按钮，20菜单');
+            $table->integer('status')->nullable(false)->default(10)->comment('状态 0禁用 10显示 20隐藏');
+
+            $table->timestamp('created_at')->comment('');
 			$table->timestamp('updated_at')->comment('');
-			
+
         });
 
         DB::statement("alter table `permissions` comment '权限表'");

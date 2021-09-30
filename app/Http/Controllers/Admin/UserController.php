@@ -57,15 +57,15 @@ class UserController extends Controller
     public function permissionTree($id)
     {
         $user = User::findOrFail($id);
-        $permissions = Permission::with('allChilds')->where('parent_id',0)->get();
+        $permissions = Permission::get()->toTree();
         $data = [];
         foreach ($permissions as $p1){
             $c1 = [];
-            if ($p1->childs->isNotEmpty()){
-                foreach ($p1->childs as $p2){
+            if ($p1->children->isNotEmpty()){
+                foreach ($p1->children as $p2){
                     $c2 = [];
-                    if ($p2->childs->isNotEmpty()){
-                        foreach ($p2->childs as $p3){
+                    if ($p2->children->isNotEmpty()){
+                        foreach ($p2->children as $p3){
                             $c2[] = array(
                                 "id" => $p3->id,
                                 "title" => $p3->display_name,

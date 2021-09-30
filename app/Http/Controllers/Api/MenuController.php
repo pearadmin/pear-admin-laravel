@@ -17,33 +17,42 @@ class MenuController extends Controller
     //后台用户菜单
     public function menu()
     {
-        $menuData = [];
-        $menus = Permission::with(['childs'])->where('parent_id',0)->orderBy('sort','desc')->get();
-        foreach ($menus as $menu){
-            $data = array(
-                "id" => $menu['id'],
-                "title" => $menu['display_name'],
-                "type" => 0,
-                "icon" => "layui-icon {$menu['icon']}",
-                "href" => ""
-            );
-            if (!empty($menu['childs'])) {
-                $sunMenus = [];
-                foreach($menu['childs'] as $submenu){
-                    $sunMenus[] = array(
-                        "id" => $submenu['id'],
-                        "title" => $submenu['display_name'],
-                        "icon" => "layui-icon {$submenu['icon']}",
-                        "type" => 1,
-                        "openType" => "_iframe",
-                        "href" => URL::route($submenu['route'])
-                    );
+        header('content-type:application/json');
+        $permissions = Permission::get()->toTree();
+        $guard = Auth::guard('web')->user();
+        $permissionArr = [];
+        foreach ($permissions as $permission){
+            $children = [];
+            if ($guard->hasPermissionTo($permission->id)) {
+                if ($permission->children->isNotEmpty()) {
+                    $sorts = [];
+                    foreach ($permission->children as $sub_permission) {
+                        $children[] = array(
+                            "id" => $sub_permission->id,
+                            "sort" => $sub_permission->sort,
+                            "title" => $sub_permission->display_name,
+                            "icon" => 'layui-icon ' . ($sub_permission->icon ?? 'layui-icon-face-cry'),
+                            "type" => 1,
+                            "openType" => ($sub_permission->type == 30 ? "_blank" : "_iframe"),
+                            "href" => ($sub_permission->type == 30 ? $sub_permission->link : route($sub_permission->route))
+                        );
+                        $sorts[] = $sub_permission->sort;
+                    }
+                    array_multisort($sorts, SORT_DESC, $children);
                 }
-                $data['children'] = $sunMenus;
+                $permissionArr[] = array(
+                    "id" => $permission->id,
+                    "title" => $permission->display_name,
+                    "type" => ($permission->route != '' ? 1 : 0),
+                    "icon" => 'layui-icon ' . ($permission->icon ?? 'layui-icon-face-cry'),
+                    "openType" => ($permission->route != '' ? "_iframe" : ""),
+                    "href" => ($permission->route != '' ? route($permission->route) : ''),
+                    "children" => $children
+                );
             }
-            $menuData[] = $data;
         }
-        return Response::json($menuData);
+
+        return Response::json($permissionArr);
     }
 
     /**

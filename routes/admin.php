@@ -28,6 +28,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/user'], function () {
 
 /*
 |--------------------------------------------------------------------------
+| 后台菜单
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    //后台菜单
+    Route::get('/menu','Api\MenuController@menu')->name('admin.menu');
+});
+
+/*
+|--------------------------------------------------------------------------
 | 后台公共页面
 |--------------------------------------------------------------------------
 */
@@ -36,8 +46,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::get('/','IndexController@layout')->name('admin.layout');
     //后台首页
     Route::get('/index','DatacenterController@index')->name('admin.index');
-    //后台菜单
-    Route::get('/menu','PermissionController@menu')->name('admin.menu');
     //基础资料
     Route::get('/profile','UserController@profile')->name('admin.profile');
     //更改密码
@@ -169,7 +177,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['middleware'=>[]],function (){
         Route::get('permission','PermissionController@index')->name('admin.permission');
         Route::get('permission/data','PermissionController@data')->name('admin.permission.data');
-        Route::get('permission/dtree','PermissionController@dtree')->name('admin.permission.dtree');
 
         //添加
         Route::get('permission/create','PermissionController@create')->name('admin.permission.create');

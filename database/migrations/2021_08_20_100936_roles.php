@@ -23,9 +23,12 @@ class Roles extends Migration
 			$table->string('name', 191)->nullable(false)->comment('');
 			$table->string('guard_name', 191)->nullable(false)->comment('');
 			$table->string('display_name', 191)->nullable(false)->comment('');
+            $table->integer('sort')->nullable(false)->default(999)->comment('排序');
+            $table->integer('type')->nullable(false)->default(10)->comment('类型 10页面角色 20数据角色');
+            $table->integer('status')->nullable(false)->default(10)->comment('状态 0禁用 10显示 20隐藏');
 			$table->timestamp('created_at')->comment('');
 			$table->timestamp('updated_at')->comment('');
-			
+
         });
 
         DB::statement("alter table `roles` comment '角色表'");
