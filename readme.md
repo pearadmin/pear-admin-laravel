@@ -2,7 +2,8 @@
 - [ ] 更新上传功能,包括单文件上传,多文件上传,编辑器上传
 - [ ] 集成百度编辑器(UEditor)
 - [x] 集成MarkDown编辑器(Editor.io)
-- [ ] 新增组织架构管理,完善组织人员关系
+- [ ] 集成stock.io实时接收通知
+- [ ] 集成log-viewer可视化管理项目日志
 
 ## 安装
 
@@ -35,7 +36,11 @@ php artisan db:seed         #写入初始化数据
 ```
 
 > 初始化完成后浏览器打开项目地址 https://www.domain.com/admin 登录
+> 
 > 初始化登录用户名:admin 密码:password
+> 
+> 可视化日志管理路由  https://www.domain.com/log-viewer
+> ![](https://gitee.com/whongbin/FigureBed/raw/master/20210930162959.png)
 
 **务必在登录成功后修改密码**
 
