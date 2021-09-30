@@ -96,7 +96,9 @@ class InitSendDataFiles extends Command
     {
         $data = [
             'name' => 'root',
-            'display_name' => '超级管理员'
+            'guard_name' => 'web',
+            'display_name' => '超级管理员',
+            'sort' => 999
         ];
         file_put_contents($filename,json_encode($data,JSON_UNESCAPED_UNICODE));
         return file_exists($filename);
@@ -109,49 +111,6 @@ class InitSendDataFiles extends Command
      */
     protected static function writePermissionsFile($filename)
     {
-        /*$permissions = Permission::with(['allChilds'])->where('parent_id',0)->orderBy('sort','desc')->get()->toArray();
-        $data = [];
-        foreach ($permissions as $i => $permission) {
-            $ch1_arr = [];
-            if (isset($permission['all_childs']) && count($permission['all_childs'])>0){
-                foreach ($permission['all_childs'] as $j => $ch1) {
-                    $ch2_arr = [];
-                    if (isset($ch1['all_childs']) && count($ch1['all_childs'])>0){
-                        foreach ($ch1['all_childs'] as $k => $ch2) {
-                            $ch2_arr[] = [
-                                'name' => $ch2['name'],
-                                'guard_name' => $ch2['guard_name'],
-                                'display_name' => $ch2['display_name'],
-                                'route' => $ch2['route']??'',
-                                'icon' => $ch2['icon']??'layui-icon-set',
-                                'sort' => $ch2['sort'],
-                                'type' => $ch2['type'],
-                            ];
-                        }
-                    }
-                    $ch1_arr[] = [
-                        'name' => $ch1['name'],
-                        'guard_name' => $ch1['guard_name'],
-                        'display_name' => $ch1['display_name'],
-                        'route' => $ch1['route']??'',
-                        'icon' => $ch1['icon']??'layui-icon-set',
-                        'sort' => $ch1['sort'],
-                        'type' => $ch1['type'],
-                        'child' => $ch2_arr
-                    ];
-                }
-            }
-            $data[] = [
-                'name' => $permission['name'],
-                'guard_name' => $permission['guard_name'],
-                'display_name' => $permission['display_name'],
-                'route' => $permission['route']??'',
-                'icon' => $permission['icon']??'layui-icon-set',
-                'sort' => $permission['sort'],
-                'type' => $permission['type'],
-                'child' => $ch1_arr
-            ];
-        }*/
         $data = [
             [
                 "name" =>"dashboard",
@@ -160,8 +119,8 @@ class InitSendDataFiles extends Command
                 "route" =>"",
                 "icon" =>"layui-icon-console",
                 "sort" =>0,
-                "type" =>1,
-                "child" =>[
+                "type" =>10,
+                "children" =>[
                     [
                         "name" =>"dashboard.datacenter",
                         "guard_name" =>"web",
@@ -169,8 +128,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.datacenter",
                         "icon" =>"layui-icon-console",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[]
+                        "type" =>20,
+                        "children" =>[]
                     ],
                     [
                         "name" =>"dashboard.message",
@@ -179,8 +138,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.message",
                         "icon" =>"layui-icon-list",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[]
+                        "type" =>20,
+                        "children" =>[]
                     ]
                 ]
             ],
@@ -191,8 +150,8 @@ class InitSendDataFiles extends Command
                 "route" =>"",
                 "icon" =>"layui-icon-read",
                 "sort" =>0,
-                "type" =>1,
-                "child" =>[
+                "type" =>10,
+                "children" =>[
                     [
                         "name" =>"information.article",
                         "guard_name" =>"web",
@@ -200,8 +159,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.article",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"information.article.create",
                                 "guard_name" =>"web",
@@ -209,7 +168,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.article.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"information.article.edit",
@@ -218,7 +177,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.article.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"information.article.destroy",
@@ -227,7 +186,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.article.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -238,8 +197,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.category",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"information.category.create",
                                 "guard_name" =>"web",
@@ -247,7 +206,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.category.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"information.category.edit",
@@ -256,7 +215,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.category.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"information.category.destroy",
@@ -265,7 +224,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.category.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -276,8 +235,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.tag",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"information.tag.create",
                                 "guard_name" =>"web",
@@ -285,7 +244,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.tag.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"information.tag.edit",
@@ -294,7 +253,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.tag.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"information.tag.destroy",
@@ -303,7 +262,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.tag.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ]
@@ -316,8 +275,8 @@ class InitSendDataFiles extends Command
                 "route" =>"",
                 "icon" =>"layui-icon-set",
                 "sort" =>0,
-                "type" =>1,
-                "child" =>[
+                "type" =>10,
+                "children" =>[
                     [
                         "name" =>"system.permission",
                         "guard_name" =>"web",
@@ -325,8 +284,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.permission",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"system.permission.create",
                                 "guard_name" =>"web",
@@ -334,7 +293,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.permission.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.permission.edit",
@@ -343,7 +302,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.permission.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.permission.destroy",
@@ -352,7 +311,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.permission.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -363,8 +322,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.role",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"system.role.create",
                                 "guard_name" =>"web",
@@ -372,7 +331,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.role.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.role.edit",
@@ -381,7 +340,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.role.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.role.destroy",
@@ -390,7 +349,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.role.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.role.permission",
@@ -399,7 +358,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.role.permission",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -410,8 +369,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.user",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"system.user.create",
                                 "guard_name" =>"web",
@@ -419,7 +378,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.user.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.user.edit",
@@ -428,7 +387,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.user.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.user.destroy",
@@ -437,7 +396,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.user.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.user.role",
@@ -446,7 +405,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.user.role",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.user.permission",
@@ -455,7 +414,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.user.permission",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -466,8 +425,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.dictionary",
                         "icon" =>"layui-icon-face-smile-fine",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"system.dictionary.create",
                                 "guard_name" =>"web",
@@ -475,7 +434,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.dictionary.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.dictionary.edit",
@@ -484,7 +443,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.dictionary.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.dictionary.destroy",
@@ -493,7 +452,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.dictionary.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -504,8 +463,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.log",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"system.login_log.destroy",
                                 "guard_name" =>"web",
@@ -513,7 +472,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.login_log.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"system.operate_log.destroy",
@@ -522,7 +481,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.operate_log.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ]
@@ -535,8 +494,8 @@ class InitSendDataFiles extends Command
                 "route" =>"",
                 "icon" =>"layui-icon-component",
                 "sort" =>0,
-                "type" =>1,
-                "child" =>[
+                "type" =>10,
+                "children" =>[
                     [
                         "name" =>"configuration.config_group",
                         "guard_name" =>"web",
@@ -544,8 +503,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.config_group",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"configuration.config_group.create",
                                 "guard_name" =>"web",
@@ -553,7 +512,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.config_group.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"configuration.config_group.edit",
@@ -562,7 +521,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.config_group.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"configuration.config_group.destroy",
@@ -571,7 +530,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.config_group.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -582,8 +541,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.config.be",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[
+                        "type" =>20,
+                        "children" =>[
                             [
                                 "name" =>"configuration.config.create",
                                 "guard_name" =>"web",
@@ -591,7 +550,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.config.create",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"configuration.config.edit",
@@ -600,7 +559,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.config.edit",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ],
                             [
                                 "name" =>"configuration.config.destroy",
@@ -609,7 +568,7 @@ class InitSendDataFiles extends Command
                                 "route" =>"admin.config.destroy",
                                 "icon" =>"layui-icon-circle",
                                 "sort" =>0,
-                                "type" =>2
+                                "type" =>20
                             ]
                         ]
                     ],
@@ -620,8 +579,8 @@ class InitSendDataFiles extends Command
                         "route" =>"admin.config.fe",
                         "icon" =>"layui-icon-circle",
                         "sort" =>0,
-                        "type" =>2,
-                        "child" =>[]
+                        "type" =>20,
+                        "children" =>[]
                     ]
                 ]
             ]

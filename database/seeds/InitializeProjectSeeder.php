@@ -10,6 +10,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\Backend\Permission;
+use Illuminate\Support\Facades\Log;
 
 class InitializeProjectSeeder extends Seeder
 {
@@ -47,64 +48,11 @@ class InitializeProjectSeeder extends Seeder
 
         //角色
         $role = Role::create(self::file_to_arr($role_data_file_name));
-
-        //权限
-        $permissions = self::file_to_arr($permission_data_file_name);
-        $sort = 0;
-        foreach ($permissions as $pem1) {
-            //生成一级权限
-            $p1 = Permission::create([
-                'name' => $pem1['name'],
-                'display_name' => $pem1['display_name'],
-                'route' => $pem1['route']??'',
-                'icon' => $pem1['icon']??1,
-                'sort' => $sort++,
-            ]);
-            //为角色添加权限
-            $role->givePermissionTo($p1);
-            //为用户添加权限
-            $user->givePermissionTo($p1);
-            if (isset($pem1['child'])) {
-                foreach ($pem1['child'] as $pem2) {
-                    //生成二级权限
-                    $p2 = Permission::create([
-                        'name' => $pem2['name'],
-                        'display_name' => $pem2['display_name'],
-                        'parent_id' => $p1->id,
-                        'route' => $pem2['route']??1,
-                        'icon' => $pem2['icon']??1,
-                        'type' => isset($pem2['type']) ? $pem2['type'] : 2,
-                        'sort' => $sort++,
-                    ]);
-                    //为角色添加权限
-                    $role->givePermissionTo($p2);
-                    //为用户添加权限
-                    $user->givePermissionTo($p2);
-                    if (isset($pem2['child'])) {
-                        foreach ($pem2['child'] as $pem3) {
-                            //生成三级权限
-                            $p3 = Permission::create([
-                                'name' => $pem3['name'],
-                                'display_name' => $pem3['display_name'],
-                                'parent_id' => $p2->id,
-                                'route' => $pem3['route']??'',
-                                'icon' => $pem3['icon']??1,
-                                'type' => isset($pem2['type']) ? $pem2['type'] : 2,
-                                'sort' => $sort++,
-                            ]);
-                            //为角色添加权限
-                            $role->givePermissionTo($p3);
-                            //为用户添加权限
-                            $user->givePermissionTo($p3);
-                        }
-                    }
-
-                }
-            }
-        }
-
         //为用户添加角色
         $user->assignRole($role);
+
+        //权限
+        $permissions = Permission::batchCreate(self::file_to_arr($permission_data_file_name),$user,$role);
 
         //配置组
         $configs =  self::file_to_arr($config_data_file_name);
@@ -154,10 +102,10 @@ class InitializeProjectSeeder extends Seeder
             }
         }
 
-        //分类
+        //标签
         $tags =  self::file_to_arr($tag_data_file_name);
         foreach ($tags as $tag) {
-            //生成分类
+            //生成标签
             $p_cate = Tag::create([
                 'name' => $tag['name'],
                 'sort' => $tag['sort'],
