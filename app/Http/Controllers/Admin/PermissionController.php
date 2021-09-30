@@ -34,8 +34,9 @@ class PermissionController extends Controller
 	    $models = Permission::query();
 	    if ($request->keyword) {
 		    $models = $models->where(function($query) use ($request){
-			    $query->where('name', 'like', '%' . $request->keyword . '%' )
-				    ->orWhere('display_name', 'like', '%' . $request->keyword . '%');
+                $query->orWhere('name', 'like', '%' . $request->keyword . '%' );
+                $query->orWhere('route', 'like', '%' . $request->keyword . '%' );
+				$query->orWhere('display_name', 'like', '%' . $request->keyword . '%');
 		    });
 	    }
 	    if ($request->name){
@@ -44,8 +45,7 @@ class PermissionController extends Controller
 	    if ($request->display_name){
 		    $models->where('display_name', $request->display_name);
 	    }
-	    // $models->where('type', 'view');
-	    $permissions = $models->orderBy("sort","asc")->get()->toTree();
+	    $permissions = $models->orderBy("sort","asc")->get();
         $data = [
             'code' => 200,
             'msg' => '正在请求中...',
