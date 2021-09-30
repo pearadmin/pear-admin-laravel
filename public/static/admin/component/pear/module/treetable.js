@@ -53,7 +53,11 @@ layui.define(['layer', 'table'], function (exports) {
                         layer.msg('参数treePidName不能为空', {icon: 5});
                         return;
                     }
-                    tt.pid = tt[param.treePidName];
+                    if (!tt[param.treePidName]) {
+                        tt.pid = 0;
+                    } else {
+                        tt.pid = tt[param.treePidName];
+                    }
                 }
             }
 
