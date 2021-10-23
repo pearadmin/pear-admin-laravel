@@ -3,7 +3,7 @@
 - [ ] 集成百度编辑器(UEditor)
 - [x] 集成MarkDown编辑器(Editor.io)
 - [ ] 集成stock.io实时接收通知
-- [ ] 集成log-viewer可视化管理项目日志
+- [x] 集成log-viewer可视化管理项目日志
 
 ## 安装
 
