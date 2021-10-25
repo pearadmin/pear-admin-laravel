@@ -1,6 +1,6 @@
 layui.define('jquery', function(exports){
   "use strict";
-
+  
   var $ = layui.$
   ,MOD_NAME = 'tag',
   TAG_CLASS = '.tag',
@@ -11,13 +11,13 @@ layui.define('jquery', function(exports){
   DEFAULT_SKIN ='layui-btn layui-btn-primary layui-btn-sm'
   ,tag = function(){
     this.config = {
-      likeHref:'../../pear/css/module/tag.css',
+      likeHref:'../css/module/tag.css',
       skin: DEFAULT_SKIN,
       tagText:'+ New Tag'
     };
     this.configs = {}
   };
-
+  
   //全局设置
   tag.prototype.set = function(options){
     var that = this;
@@ -25,12 +25,12 @@ layui.define('jquery', function(exports){
     tag.render();
     return that;
   };
-
+  
   //表单事件监听
   tag.prototype.on = function(events, callback){
     return layui.onevent.call(this, MOD_NAME, events, callback);
   };
-
+  
   //外部Tag新增
   tag.prototype.add = function(filter, options){
     var tagElem = $(TAG_CLASS + '[lay-filter='+ filter +']')
@@ -38,7 +38,7 @@ layui.define('jquery', function(exports){
     call.tagAuto(filter);
     return this;
   };
-
+  
   //外部Tag删除
   tag.prototype.delete = function(filter, layid){
     var tagElem = $(TAG_CLASS + '[lay-filter='+ filter +']')
@@ -141,7 +141,7 @@ layui.define('jquery', function(exports){
       });
     }
   };
-
+  
   //初始化元素操作
   tag.prototype.init = function(filter, options){
     layui.addcss(tag.config.likeHref);
@@ -150,7 +150,7 @@ layui.define('jquery', function(exports){
     }
     return call.tagAuto.call(this, filter);
   };
-
+  
   tag.prototype.render = tag.prototype.init;
 
   var tag = new tag(), dom = $(document);
