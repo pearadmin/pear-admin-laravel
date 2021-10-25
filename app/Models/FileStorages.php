@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;

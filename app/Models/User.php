@@ -31,6 +31,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_ed' => 'datetime:Y-m-d H:i:s'
+    ];
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);

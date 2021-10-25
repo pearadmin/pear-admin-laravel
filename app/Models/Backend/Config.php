@@ -2,7 +2,7 @@
 
 namespace App\Models\Backend;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
 
 /**
  * @property integer $id
@@ -21,7 +21,7 @@ class Config extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';

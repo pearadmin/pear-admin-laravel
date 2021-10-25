@@ -12,6 +12,10 @@ class Permission extends \Spatie\Permission\Models\Permission
     protected $guarded = [];
     protected $table = 'permissions'; //表名
     protected $appends = ['parent','status_label','type_class','type_name'];
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_ed' => 'datetime:Y-m-d H:i:s'
+    ];
 
     CONST STATUS_DISABLE = 0;  // 禁用
     CONST STATUS_DISPLAY = 10;  // 显示

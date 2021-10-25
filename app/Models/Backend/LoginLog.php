@@ -2,7 +2,7 @@
 
 namespace App\Models\Backend;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
 
 class LoginLog extends Model
 {
