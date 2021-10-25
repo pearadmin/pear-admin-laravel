@@ -1,3 +1,6 @@
+## 版本
+`此版本基于Laravel6.x构建`
+
 ## TODO
 - [ ] 更新上传功能,包括单文件上传,多文件上传,编辑器上传
 - [ ] 集成百度编辑器(UEditor)
@@ -31,6 +34,7 @@ cp .env.example .env #配置.env里的数据库连接信息
 ```shell
 php artisan key:generate    #初始化key
 php artisan storage:link    #软连文件存储目录
+chmod -R 755 ./storage      #文件存储目录权限
 php artisan migrate --step  #执行数据迁移
 php artisan db:seed         #写入初始化数据
 ```
