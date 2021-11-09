@@ -31,7 +31,7 @@
 					<li class="layui-nav-item">
 						<!-- 头 像 -->
 						<a href="javascript:;">
-							<img src="{{asset(BE_ADMIN.'/images/avatar.jpg')}}" class="layui-nav-img">
+							<img src="{{ Avatar::create($guard->username)->toBase64() }}" class="layui-nav-img" alt="{{$guard->nickname ?? $guard->username}}" title="{{$guard->nickname ?? $guard->username}}">
 						</a>
                         <!-- 功 能 菜 单 -->
 						<dl class="layui-nav-child">
@@ -80,37 +80,28 @@
 		<script src="{{asset(BE_COMPONENT.'/pear/pear.js')}}"></script>
         <!-- 框 架 初 始 化 -->
 		<script>
-			layui.use(['admin','jquery','convert','popup','notice'], function() {
-                const admin = layui.admin;
+            layui.use(['admin','jquery','popup','notice'], function() {
                 const $ = layui.jquery;
-                const convert = layui.convert;
+                const admin = layui.admin;
                 const popup = layui.popup;
                 const notice = layui.notice;
 
-                // 初始化顶部用户信息
-                admin.setAvatar("{{ Avatar::create($guard->username)->toBase64() }}","{{$guard->nickname ?? $guard->username}}");
-
-                // 根目录下 pear.config.yml 文件为初始化配置
-                // 你可以通过 admin.setConfigPath 方法修改配置文件位置
-                // 你可以通过 admin.setConfigType 方法修改配置文件类型
                 admin.setConfigType("yml");
                 admin.setConfigPath("{{asset(BE_CONFIG.'/pear.config.yml')}}");
+
                 admin.render();
 
                 // 登出逻辑
                 admin.logout(function(){
-
                     popup.success("注销成功",function(){
                         location.href = "{{route('admin.logout')}}";
                     })
-
                     // 注销逻辑 返回 true / false
                     return true;
                 })
 
-                // 初始化消息回调
-                // admin.message();
-
+                /*// 初始化消息回调
+                admin.message();*/
                 // 重写消息回调 [消息列表点击事件]
                 admin.message(function(id, title, context, form) {
                     console.log(id)
