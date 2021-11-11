@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,23 +14,15 @@
 |
 */
 
-use Illuminate\Support\Facades\Artisan;
-
-//清除缓存
-Route::get('/clear-cache', function() {
-    Artisan::call('config:clear');  //清除配置文件缓存
-    Artisan::call('cache:clear');   //清除缓存
-    Artisan::call('view:clear');    //清理视图缓存
-    return "缓存已清除! ";
+Route::get('/', function () {
+    return redirect()->to(\route('page.home'));
 });
 
-//测试命令行
-Route::get('/command', function() {
-    Artisan::call('init_send_data_files');
+Route::group(['prefix' => config('layadmin.path_prefix')], function () {
+    Route::get('/login', [PageController::class, 'login'])->name('page.login');
+    Route::get('/home', [PageController::class, 'home'])->name('page.home');
+    Route::get('/page/config', [PageController::class, 'config']);
+    Route::put('/page/config', [PageController::class, 'update']);
+
+    Route::get('/{path}', [PageController::class, 'page']);
 });
-
-//留言提交接口
-Route::post('/message', 'MessagesController@create')->name('message');
-
-//首页
-Route::get('/','Home\IndexController@index')->name('home');
