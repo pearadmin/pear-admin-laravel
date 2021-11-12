@@ -21,8 +21,6 @@ Route::get('/', function () {
 Route::group(['prefix' => config('layadmin.path_prefix')], function () {
     Route::get('/login', [PageController::class, 'login'])->name('page.login');
     Route::get('/home', [PageController::class, 'home'])->name('page.home');
-    Route::get('/page/config', [PageController::class, 'config']);
-    Route::put('/page/config', [PageController::class, 'update']);
 
     Route::get('/{path}', [PageController::class, 'page']);
 });

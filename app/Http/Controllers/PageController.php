@@ -18,7 +18,7 @@ class PageController extends Controller
 
     public function page($path)
     {
-        return View::exists($path) ? view($path) : view('errors.404');
+        return View::exists($path) ? view($path) : view('layadmin::errors.404');
     }
 
     public function home()
@@ -33,34 +33,5 @@ class PageController extends Controller
         }
 
         return view('login');
-    }
-
-    public function config(Request $request)
-    {
-        $this->validate($request, [
-            'referer' => 'required',
-        ]);
-
-        $referer = $request->get('referer');
-
-        $pageConfig = LayAdmin::getPageConfig($referer);
-
-        return Response::success($pageConfig);
-    }
-
-    public function update(Request $request)
-    {
-        $this->validate($request, [
-            'config' => 'required',
-            'page' => 'required',
-        ]);
-
-        $page = $request->get('page');
-        $pageConfig = $request->get('config');
-
-        $pageConfigPath = LayAdmin::getPageConfigPath($page);
-        File::put($pageConfigPath, $pageConfig);
-
-        return Response::ok('配置更新成功');
     }
 }
