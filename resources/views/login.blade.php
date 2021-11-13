@@ -8,10 +8,10 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <input type="text" name="username" placeholder="账 户" lay-verify="required" hover class="layui-input"/>
+            <input type="text" name="username" value="admin" placeholder="账 户" lay-verify="required" hover class="layui-input"/>
         </div>
         <div class="layui-form-item">
-            <input type="password" name="password" placeholder="密 码" lay-verify="required" hover class="layui-input"/>
+            <input type="password" name="password" value="password" placeholder="密 码" lay-verify="required" hover class="layui-input"/>
         </div>
         <div class="layui-form-item">
             <input type="checkbox" name="remember" title="记住密码" lay-skin="primary" checked>
