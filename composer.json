@@ -17,6 +17,7 @@
         "jiannei/laravel-schedule": "^1.0",
         "jiannei/layadmin": "dev-main",
         "laravel/framework": "^8.40",
+        "laravel/sanctum": "^2.12",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {

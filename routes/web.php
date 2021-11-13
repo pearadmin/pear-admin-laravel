@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,12 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->to(\route('page.home'));
+    return redirect()->to(\route('home'));
 });
 
 Route::group(['prefix' => config('layadmin.path_prefix')], function () {
-    Route::get('/login', [PageController::class, 'login'])->name('page.login');
-    Route::get('/home', [PageController::class, 'home'])->name('page.home');
+    Route::post('/login', [AuthController::class,'login']);
+    Route::delete('/logout', [AuthController::class,'logout']);
+
+    Route::get('/login', [PageController::class, 'login'])->name('login');
+    Route::get('/home', [PageController::class, 'home'])->name('home');
 
     Route::get('/{path}', [PageController::class, 'page']);
 });

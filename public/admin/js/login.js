@@ -1,7 +1,8 @@
-layui.use(['form', 'button', 'popup'], function() {
+layui.use(['form', 'button', 'popup','http'], function() {
   var form = layui.form;
   var button = layui.button;
   var popup = layui.popup;
+  var http = layui.http;
 
   // 登 录 提 交
   form.on('submit(login)', function(data) {
@@ -15,9 +16,22 @@ layui.use(['form', 'button', 'popup'], function() {
       elem: '.login',
       time: 1500,
       done: function() {
-        popup.success("登录成功", function() {
-          location.href = "code.html"
-        });
+          http.ajax({
+              url: '/admin/login',
+              data: JSON.stringify(data.field),
+              success: function (response) {
+                  if (response.status === 'success') {
+                      popup.success(response.message, function () {
+                          location.href = "/admin/home"
+                      });
+                  } else {
+                      popup.failure(response.message);
+                  }
+              },
+              error: function (e, code) {
+                  http.ajax.logError(e)
+              }
+          })
       }
     })
     return false;
