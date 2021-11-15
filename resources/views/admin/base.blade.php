@@ -8,18 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{asset(BE_COMPONENT.'/pear/css/pear.css')}}"/>
+    <link rel="stylesheet" href="{{asset(config('static.be_static').'component/pear/css/pear.css')}}"/>
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="bookmark" href="/favicon.ico">
-            
+
     @yield('style')
 </head>
 <body class="pear-container">
 
     @yield('content')
 
-<script src="{{asset(BE_COMPONENT.'/layui/layui.js')}}"></script>
-<script src="{{asset(BE_COMPONENT.'/pear/pear.js')}}"></script>
+<script src="{{asset(config('static.be_static').'component/layui/layui.js')}}"></script>
+<script src="{{asset(config('static.be_static').'component/pear/pear.js')}}"></script>
     @yield('editor')
 <script>
     layui.use(['layer'], function() {

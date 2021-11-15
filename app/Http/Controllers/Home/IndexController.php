@@ -21,8 +21,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        exit('hello world');
-        // return view('home.index');
+        // exit('hello world');
+        return view('home.index');
     }
 
 }

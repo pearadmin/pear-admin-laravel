@@ -5,11 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title> {{session('configuration.site_title')}}管理系统 </title>
         <!-- 依 赖 样 式 -->
-		<link rel="stylesheet" href="{{asset(BE_COMPONENT.'/pear/css/pear.css')}}" />
+		<link rel="stylesheet" href="{{asset(config('static.be_static').'component/pear/css/pear.css')}}" />
         <!-- 加 载 样 式-->
-		<link rel="stylesheet" href="{{asset(BE_ADMIN.'/css/load.css')}}" />
+		<link rel="stylesheet" href="{{asset(config('static.be_static').'admin/css/load.css')}}" />
         <!-- 布 局 样 式 -->
-		<link rel="stylesheet" href="{{asset(BE_ADMIN.'/css/admin.css')}}" />
+		<link rel="stylesheet" href="{{asset(config('static.be_static').'admin/css/admin.css')}}" />
 	</head>
     <!-- 结 构 代 码 -->
 	<body class="layui-layout-body pear-admin">
@@ -76,8 +76,8 @@
 			<a href="#" class="layui-icon layui-icon-shrink-right"></a>
 		</div>
         <!-- 依 赖 脚 本 -->
-		<script src="{{asset(BE_COMPONENT.'/layui/layui.js')}}"></script>
-		<script src="{{asset(BE_COMPONENT.'/pear/pear.js')}}"></script>
+		<script src="{{asset(config('static.be_static').'component/layui/layui.js')}}"></script>
+		<script src="{{asset(config('static.be_static').'component/pear/pear.js')}}"></script>
         <!-- 框 架 初 始 化 -->
 		<script>
             layui.use(['admin','jquery','popup','notice'], function() {
@@ -87,7 +87,7 @@
                 const notice = layui.notice;
 
                 admin.setConfigType("yml");
-                admin.setConfigPath("{{asset(BE_CONFIG.'/pear.config.yml')}}");
+                admin.setConfigPath("{{asset(config('static.be_static').'config/pear.config.yml')}}");
 
                 admin.render();
 

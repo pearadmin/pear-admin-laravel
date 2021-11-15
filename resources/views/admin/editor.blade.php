@@ -1,4 +1,4 @@
-@if (config('custom.rich_text_editor') == 'tinymce') 
+@if (config('custom.rich_text_editor') == 'tinymce')
     <script>
     layui.use(['tinymce'], function() {
             var tinymce = layui.tinymce
@@ -11,11 +11,11 @@
             ue.getContent()
         });
     </script>
-@elseif (config('custom.rich_text_editor') == 'editormd') 
+@elseif (config('custom.rich_text_editor') == 'editormd')
     <!-- # TODO markdown编辑器  -->
-@else 
-    <script type="text/javascript" src="{{asset(U_EDITOR.'ueditor.config.js')}}"></script>
-    <script type="text/javascript" src="{{asset(U_EDITOR.'ueditor.all.js')}}"></script>
+@else
+    <script type="text/javascript" src="{{asset(config('static.editor').'u_editor/ueditor.config.js')}}"></script>
+    <script type="text/javascript" src="{{asset(config('static.editor').'u_editor/ueditor.all.js')}}"></script>
     <script type="text/javascript">
         var ue = UE.getEditor('container');
     </script>

@@ -1,7 +1,7 @@
 @extends('admin.base')
 
 @section('style')
-<link rel="stylesheet" href="{{asset(BE_ADMIN.'/css/other/console1.css')}}" />
+<link rel="stylesheet" href="{{asset(config('static.be_static').'admin/css/other/console1.css')}}" />
 @endsection
 
 @section('content')
@@ -154,42 +154,42 @@
                     <div class="layui-card-body">
                         <dl class="layuiadmin-card-status">
                             <dd>
-                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(BE_ADMIN.'/images/avatar.jpg')}}"></a></div>
+                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(config('static.be_static').'admin/images/avatar.jpg')}}"></a></div>
                                 <div>
                                     <p>七彩枫叶 在 <a lay-href="https://gitee.com/Jmysy/Pear-Admin-Layui">Pear Admin 专区</a> 回答问题</p>
                                     <span>几秒前</span>
                                 </div>
                             </dd>
                             <dd>
-                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(BE_ADMIN.'/images/avatar.jpg')}}"></a></div>
+                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(config('static.be_static').'admin/images/avatar.jpg')}}"></a></div>
                                 <div>
                                     <p>简 在 <a lay-href="https://gitee.com/Jmysy/Pear-Admin-Layui">Pear Admin 专区</a> 进行了 <a lay-href="http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/">提问</a></p>
                                     <span>2天前</span>
                                 </div>
                             </dd>
                             <dd>
-                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(BE_ADMIN.'/images/avatar.jpg')}}"></a></div>
+                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(config('static.be_static').'admin/images/avatar.jpg')}}"></a></div>
                                 <div>
                                     <p>恒宇少年 将 <a lay-href="https://gitee.com/Jmysy/Pear-Admin-Layui">Pear Admin </a> 更新至 2.3.0 版本</p>
                                     <span>7天前</span>
                                 </div>
                             </dd>
                             <dd>
-                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(BE_ADMIN.'/images/avatar.jpg')}}"></a></div>
+                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(config('static.be_static').'admin/images/avatar.jpg')}}"></a></div>
                                 <div>
                                     <p>如花 在 <a lay-href="https://gitee.com/Jmysy/Pear-Admin-Layui">Pear Admin 社区</a> 发布了 <a lay-href="http://fly.layui.com/column/suggest/">建议</a></p>
                                     <span>7天前</span>
                                 </div>
                             </dd>
                             <dd>
-                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(BE_ADMIN.'/images/avatar.jpg')}}"></a></div>
+                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(config('static.be_static').'admin/images/avatar.jpg')}}"></a></div>
                                 <div>
                                     <p>就眠仪式 在 <a lay-href="https://gitee.com/Jmysy/Pear-Admin-Layui">Pear Admin 社区</a> 发布了 <a lay-href="http://fly.layui.com/column/suggest/">建议</a></p>
                                     <span>8天前</span>
                                 </div>
                             </dd>
                             <dd>
-                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(BE_ADMIN.'/images/avatar.jpg')}}"></a></div>
+                                <div class="layui-status-img"><a href="javascript:;"><img style="width: 32px;height: 32px;border-radius: 50px;" src="{{asset(config('static.be_static').'admin/images/avatar.jpg')}}"></a></div>
                                 <div>
                                     <p>贤心 在 <a lay-href="https://gitee.com/Jmysy/Pear-Admin-Layui">Pear Admin 专区</a> 进行了 <a lay-href="http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/">提问</a></p>
                                     <span>8天前</span>
