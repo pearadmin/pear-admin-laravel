@@ -11,6 +11,51 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use App\Utils\Helper;
 
+/**
+ * App\Models\FileStorages
+ *
+ * @property int $id
+ * @property int $app_id 模块ID
+ * @property string $app_type 模型
+ * @property string $base_url 域名/
+ * @property string $link 完整访问路径
+ * @property string $path 访问路径
+ * @property string|null $type 文件类型：image/jpeg等
+ * @property int|null $size KB大小
+ * @property string $name 客户端文件名
+ * @property string $original_name 文件原名
+ * @property string|null $upload_ip 上传客户端IP
+ * @property string|null $hash 文件哈希
+ * @property int $status 状态：0关闭；10公开；20私有
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $app
+ * @property-read mixed $size_format
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages newQuery()
+ * @method static \Illuminate\Database\Query\Builder|FileStorages onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereAppId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereAppType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereBaseUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereOriginalName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorages whereUploadIp($value)
+ * @method static \Illuminate\Database\Query\Builder|FileStorages withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|FileStorages withoutTrashed()
+ * @mixin \Eloquent
+ */
 class FileStorages extends Model
 {
 	use SoftDeletes;

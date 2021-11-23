@@ -4,6 +4,14 @@ namespace App\Models;
 
 use App\Model;
 
+/**
+ * App\Models\Option
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Option newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option query()
+ * @mixin \Eloquent
+ */
 class Option extends Model
 {
     public $timestamps = false;

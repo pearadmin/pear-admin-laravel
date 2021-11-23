@@ -4,6 +4,14 @@ namespace App;
 
 use DateTimeInterface;
 
+/**
+ * App\Model
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Model newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model query()
+ * @mixin \Eloquent
+ */
 class Model extends \Illuminate\Database\Eloquent\Model
 {
     /**

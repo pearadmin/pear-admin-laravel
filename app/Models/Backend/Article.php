@@ -5,6 +5,8 @@ namespace App\Models\Backend;
 use App\Model;
 
 /**
+ * App\Models\Backend\Article
+ *
  * @property integer $id
  * @property int $category
  * @property string $title
@@ -15,6 +17,24 @@ use App\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FileStorages[] $file
+ * @property-read int|null $file_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Backend\Tag[] $tags
+ * @property-read int|null $tags_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Article newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Article query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereCategory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereClick($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereThumb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Article extends Model
 {

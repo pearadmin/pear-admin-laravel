@@ -11,7 +11,7 @@
         "php": "^7.3|^8.0",
         "ext-curl": "*",
         "arcanedev/log-viewer": "^8.0",
-        "caouecs/laravel-lang": "~5.0",
+        "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -30,6 +30,7 @@
         "tinify/tinify": "^1.5"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.3.6",
         "fzaninotto/faker": "^1.4",
         "jaguarjack/migration-generator": "dev-master",
