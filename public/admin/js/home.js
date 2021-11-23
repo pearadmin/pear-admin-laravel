@@ -10,7 +10,7 @@ layui.use(['admin', 'popup', 'context','http'], function () {
     // 登出逻辑
     admin.logout(function () {
         http.ajax({
-            url: '/admin/logout',
+            url: '/logout',
             type: 'DELETE',
 
             success: function (response) {

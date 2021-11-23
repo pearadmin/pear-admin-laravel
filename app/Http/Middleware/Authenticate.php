@@ -15,7 +15,9 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            $prefix = config('layadmin.path.prefix');
+
+            return route("$prefix.page.login");
         }
     }
 }
