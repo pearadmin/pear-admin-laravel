@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
@@ -13,20 +12,30 @@ class PageController extends Controller
 
     public function page($path)
     {
-        return View::exists($path) ? view($path) : view('layadmin::errors.404');
-    }
+        if (!$view = config('layadmin.page.view')) {// 配置错误
+            return \view('layadmin::errors.404');
+        }
 
-    public function home()
-    {
-        return view('home');
+        return \view($view);
     }
 
     public function login()
     {
-        if (auth()->check()) {
-            return redirect(route('home'));
+        if (auth('sanctum')->check()) {
+            return redirect('/');
         }
 
         return view('login');
+    }
+
+    public function errors404()
+    {
+        // 404 异常时重定向
+        return \view('layadmin::errors.404');
+    }
+
+    public function errors500()
+    {
+        return \view('layadmin::errors.500');
     }
 }

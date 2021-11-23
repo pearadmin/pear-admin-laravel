@@ -10,11 +10,20 @@
  */
 
 return [
-    // 后台配置
-    'path_prefix' => env('ADMIN_PATH_PREFIX', 'admin'), // 视图路由路径前缀，需要与视图配置文件的路径对应
+    'path' => [
+        'prefix' => env('ADMIN_PATH_PREFIX', 'admin'), // 视图路由路径前缀，需要与视图配置文件的路径对应
+
+        'home' => env('ADMIN_HOME_PATH', '/'),
+    ],
 
     'title' => env('ADMIN_TITLE', 'LayAdmin'),
     'desc' => env('ADMIN_DESC', '江 夏 区 最 具 影 响 力 的 后 台 系 统 之 一'),
+
+    'log' => [
+        'debug' => [
+            'channel' => env('ADMIN_LOG_CHANNEL', 'daily'),
+        ],
+    ],
 
     // layui 组件配置
     'table' => [

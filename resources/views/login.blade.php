@@ -14,6 +14,9 @@
             <input type="password" name="password" value="password" placeholder="密 码" lay-verify="required" hover class="layui-input"/>
         </div>
         <div class="layui-form-item">
+            <div id="slider"></div>
+        </div>
+        <div class="layui-form-item">
             <input type="checkbox" name="remember" title="记住密码" lay-skin="primary" checked>
         </div>
         <div class="layui-form-item">

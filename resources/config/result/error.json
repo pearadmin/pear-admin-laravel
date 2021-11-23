@@ -1,0 +1,7 @@
+{
+    "layout": "base",
+    "view": "layadmin::result.error",
+    "styles": [
+        "layadmin/css/result.css"
+    ]
+}

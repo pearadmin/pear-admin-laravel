@@ -16,7 +16,7 @@
         "jiannei/laravel-logger": "^1.3",
         "jiannei/laravel-response": "^4.0",
         "jiannei/laravel-schedule": "^1.0",
-        "jiannei/layadmin": "dev-main",
+        "jiannei/layadmin": "^3.0",
         "laravel/framework": "^8.40",
         "laravel/sanctum": "^2.12",
         "laravel/tinker": "^2.5"

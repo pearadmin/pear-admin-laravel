@@ -1,0 +1,7 @@
+{
+    "layout": "base",
+    "view": "layadmin::errors.404",
+    "styles": [
+        "layadmin/css/error.css"
+    ]
+}
