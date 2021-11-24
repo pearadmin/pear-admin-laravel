@@ -19,7 +19,8 @@
         "laravel/framework": "^8.40",
         "laravel/sanctum": "^2.12",
         "laravel/tinker": "^2.5",
-        "spatie/laravel-activitylog": "^3.17"
+        "spatie/laravel-activitylog": "^3.17",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

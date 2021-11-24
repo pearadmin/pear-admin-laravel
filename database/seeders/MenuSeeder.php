@@ -66,6 +66,13 @@ class MenuSeeder extends Seeder
                 "href" => "",
                 "children" => [
                     [
+                        "title" => "路由列表",
+                        "icon" => "",
+                        "type" => 1,
+                        "open_type" => "_iframe",
+                        "href" => "system/route/index",
+                    ],
+                    [
                         "title" => "菜单管理",
                         "icon" => "",
                         "type" => 1,

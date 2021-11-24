@@ -1,0 +1,72 @@
+{
+  "layout": "table",
+  "title": "路由列表",
+  "view": "system.route.index",
+  "styles": [],
+  "scripts": [
+    "admin/js/system/route/index.js"
+  ],
+  "components": {
+    "table": {
+      "element": "table",
+      "attributes": {
+        "id": "system-route-index",
+        "lay-filter": "system-route-index"
+      },
+      "config": {
+        "elem": "#system-route-index",
+        "url": "/api/routes",
+        "toolbar": "#system-route-index-toolbar",
+        "height": "full-70",
+        "limit": 20,
+        "limits": [
+          20,
+          30,
+          40,
+          50,
+          60,
+          70,
+          80,
+          90,
+          100
+        ],
+        "cols": [
+          [
+            {
+              "field": "id",
+              "title": "Id",
+              "width": 80
+            },
+            {
+              "field": "uri",
+              "title": "Uri"
+            },
+            {
+              "field": "name",
+              "title": "路由名称"
+            },
+            {
+              "field": "action",
+              "title": "Action"
+            },
+            {
+              "field": "middleware",
+              "title": "middleware",
+              "templet": "#system-route-index-middleware"
+            }
+          ]
+        ]
+      },
+      "toolbar": [
+        {
+          "element": "button",
+          "content": "<i class=\"pear-icon pear-icon-import\"></i> 同步路由",
+          "attributes": {
+            "class": "pear-btn pear-btn-primary pear-btn-md",
+            "lay-event": "sync"
+          }
+        }
+      ]
+    }
+  }
+}
