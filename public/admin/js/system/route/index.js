@@ -7,6 +7,8 @@ layui.use(['table', 'http', 'popup'], function () {
   table.on('toolbar(system-route-index)', function (obj) {
     if (obj.event === 'sync') {
       actions.sync();
+    }else if (obj.event === 'refresh') {
+      actions.refresh();
     }
   });
 
