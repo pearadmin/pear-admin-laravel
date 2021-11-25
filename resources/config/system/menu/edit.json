@@ -1,0 +1,77 @@
+{
+  "layout": "form",
+  "title": "菜单编辑",
+  "view": "layadmin::form",
+  "styles": [
+  ],
+  "scripts": [
+    "admin/js/system/menu/edit.js"
+  ],
+  "components": {
+    "form": {
+      "element": "form",
+      "attributes": {
+        "class": "layui-form",
+        "lay-filter": "system-menu-edit"
+      },
+      "items": [
+        {
+          "element": "select",
+          "label": "所属项目",
+          "attributes": {
+            "id": "project",
+            "name": "project",
+            "lay-verify": "required",
+            "xm-select": "project",
+            "xm-select-radio": "",
+            "xm-select-search": ""
+          }
+        },
+        {
+          "element": "input",
+          "label": "环境名称",
+          "attributes": {
+            "type": "text",
+            "class": "layui-input",
+            "id": "name",
+            "name": "name",
+            "lay-verify": "required",
+            "placeholder": "请输入环境名称",
+            "autocomplete": "off"
+          }
+        },
+        {
+          "element": "textarea",
+          "label": "环境描述",
+          "attributes": {
+            "id": "desc",
+            "name": "desc",
+            "class": "layui-textarea",
+            "lay-verify": "required",
+            "placeholder": "请输入描述内容"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "element": "button",
+          "content": "<i class=\"layui-icon layui-icon-ok\"></i> 提 交",
+          "attributes": {
+            "type": "submit",
+            "class": "pear-btn pear-btn-primary pear-btn-sm",
+            "lay-submit": "",
+            "lay-filter": "system-menu-edit-submit"
+          }
+        },
+        {
+          "element": "button",
+          "content": "<i class=\"layui-icon layui-icon-refresh\"></i> 重 置",
+          "attributes": {
+            "type": "reset",
+            "class": "pear-btn pear-btn-sm"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "layout": "treetable",
+  "title": "菜单列表",
+  "view": "system.menu.index",
+  "styles": [],
+  "scripts": [
+    "admin/js/system/menu/index.js"
+  ],
+  "components": {
+    "table": {
+      "element": "table",
+      "attributes": {
+        "id": "system-menu-index",
+        "lay-filter": "system-menu-index"
+      },
+      "config": {
+        "treeColIndex": 1,
+        "treeSpid": 0,
+        "treeIdName": "id",
+        "treePidName": "p_id",
+        "treeDefaultClose": false,
+        "elem": "#system-menu-index",
+        "url": "/api/menus",
+        "toolbar": "#system-menu-index-toolbar",
+        "height": "full-70",
+        "limit": 20,
+        "limits": [
+          20,
+          30,
+          40,
+          50,
+          60,
+          70,
+          80,
+          90,
+          100
+        ],
+        "cols": [
+          [
+            {
+              "field": "id",
+              "title": "Id",
+              "width": 80
+            },
+            {
+              "field": "title",
+              "title": "名称"
+            },
+            {
+              "field": "icon",
+              "title": "图标"
+            },
+            {
+              "field": "type",
+              "title": "类型"
+            },
+            {
+              "field": "href",
+              "title": "href"
+            },
+            {
+              "field": "open_type",
+              "title": "打开方式"
+            },
+            {
+              "field": "sort",
+              "title": "排序"
+            },
+            {
+              "type": "action",
+              "title": "操作",
+              "toolbar": "#system-menu-index-bar",
+              "align": "left",
+              "width": 120,
+              "fixed": "right"
+            }
+          ]
+        ]
+      },
+      "toolbar": [
+        {
+          "element": "button",
+          "content": "<i class=\"layui-icon layui-icon-add-1\"></i> 新 增",
+          "attributes": {
+            "class": "pear-btn pear-btn-primary pear-btn-md",
+            "lay-event": "add"
+          }
+        }
+      ],
+      "column": {
+        "actions": [
+          {
+            "element": "button",
+            "content": "<i class=\"layui-icon layui-icon-edit\"></i>",
+            "attributes": {
+              "class": "pear-btn pear-btn-primary pear-btn-sm",
+              "lay-event": "edit"
+            }
+          },
+          {
+            "element": "button",
+            "content": "<i class=\"layui-icon layui-icon-delete\"></i>",
+            "attributes": {
+              "class": "pear-btn pear-btn-danger pear-btn-sm",
+              "lay-event": "delete"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

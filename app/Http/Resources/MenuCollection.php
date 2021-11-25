@@ -21,6 +21,8 @@ class MenuCollection extends ResourceCollection
                 'parentId' => $item->p_id,
                 'last' => $item->children->count() ? false : true,
                 'sort' => $item->sort,
+                'created_at' => $item->created_at,
+                'updated_at' => $item->updated_at,
             ];
         });
     }

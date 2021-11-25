@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('menu/tree', [MenusController::class, 'tree']);
+    Route::get('menus', [MenusController::class, 'index']);
 
     Route::get('routes', [RoutesController::class, 'index']);
     Route::put('routes', [RoutesController::class, 'sync']);

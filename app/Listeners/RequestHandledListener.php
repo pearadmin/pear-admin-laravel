@@ -30,11 +30,13 @@ class RequestHandledListener
         }
 
         $context = [
-            'unique_id' => $event->request->server('UNIQUE_ID'),
             'ip' => $event->request->ip(),
+            'path' => $event->request->path(),
+            'method' => $event->request->method(),
             'request' => $request,
             'response' => $event->response instanceof SymfonyResponse ? json_decode($event->response->getContent(), true) : (string)$event->response,
             'duration' => format_duration($end - $start),
+            'unique_id' => $event->request->server('UNIQUE_ID') ?? '',
         ];
 
         activity('request')->withProperties($context)->log($event->request->path());
