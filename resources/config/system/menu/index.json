@@ -48,7 +48,8 @@
             },
             {
               "field": "icon",
-              "title": "图标"
+              "title": "图标",
+              "templet": "#system-menu-index-icon"
             },
             {
               "field": "type",
