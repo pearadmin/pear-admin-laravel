@@ -18,13 +18,12 @@ class CreateMenusTable extends Migration
             $table->unsignedBigInteger('p_id')->default(0);
             $table->string('title');
             $table->string('icon')->nullable();
-            $table->unsignedTinyInteger('type');
+            $table->unsignedTinyInteger('type')->default(0);
             $table->string('href')->nullable();
             $table->string('open_type')->nullable();
             $table->unsignedInteger('sort')->default(0);
             $table->unsignedBigInteger('creator_id');
             $table->unsignedBigInteger('updater_id');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

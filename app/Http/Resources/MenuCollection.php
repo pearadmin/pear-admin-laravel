@@ -11,8 +11,9 @@ class MenuCollection extends ResourceCollection
         return $this->collection->map(function ($item) {
             return [
                 'id' => $item->id,
+                'p_id' => $item->p_id,
                 'title' => $item->title,
-                'icon' => $item->icon,
+                'icon' => "layui-icon $item->icon",
                 'type' => $item->type,
                 'href' => $item->href,
                 'openType' => $item->open_type,

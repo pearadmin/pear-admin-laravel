@@ -12,7 +12,7 @@ class MenuResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'icon' => $this->icon,
+            'icon' => "layui-icon ".$this->icon,
             'type' => $this->type,
             'href' => $this->href,
             'openType' => $this->open_type,

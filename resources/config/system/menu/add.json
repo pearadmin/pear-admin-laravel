@@ -1,18 +1,18 @@
 {
   "layout": "form",
-  "title": "菜单编辑",
+  "title": "菜单新增",
   "view": "layadmin::form",
   "styles": [
   ],
   "scripts": [
-    "admin/js/system/menu/edit.js"
+    "admin/js/system/menu/add.js"
   ],
   "components": {
     "form": {
       "element": "form",
       "attributes": {
         "class": "layui-form",
-        "lay-filter": "system-menu-edit"
+        "lay-filter": "system-menu-add"
       },
       "items": [
         {
@@ -98,7 +98,7 @@
             "type": "submit",
             "class": "pear-btn pear-btn-primary pear-btn-sm",
             "lay-submit": "",
-            "lay-filter": "system-menu-edit-submit"
+            "lay-filter": "system-menu-add-submit"
           }
         },
         {

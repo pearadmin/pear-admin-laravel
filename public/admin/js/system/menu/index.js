@@ -9,6 +9,8 @@ layui.use(['table', 'http', 'popup', 'common'], function () {
   table.on(`toolbar(${tableUniqueId})`, function (obj) {
     if (obj.event === 'refresh') {
       actions.refresh();
+    } else if (obj.event === 'add') {
+      actions.add();
     }
   });
 
@@ -22,12 +24,24 @@ layui.use(['table', 'http', 'popup', 'common'], function () {
   });
 
   let actions = {
+    add: function () {
+      layer.open({
+        type: 2,
+        title: '新增',
+        content: '/admin/system/menu/add',
+        area: [common.isModile() ? '100%' : '600px', common.isModile() ? '100%' : '520px'],
+        shade: 0.1,
+        closeBtn: 1,
+        scrollbar: false,
+        maxmin: true,
+      });
+    },
     edit: function (data) {
       layer.open({
         type: 2,
         title: '编辑',
         content: '/admin/system/menu/edit?id=' + data.id,
-        area: [common.isModile() ? '100%' : '500px', common.isModile() ? '100%' : '400px'],
+        area: [common.isModile() ? '100%' : '600px', common.isModile() ? '100%' : '520px'],
         shade: 0.1,
         closeBtn: 1,
         scrollbar: false,
@@ -59,7 +73,7 @@ layui.use(['table', 'http', 'popup', 'common'], function () {
       });
     },
     refresh: function () {
-      table.reload(tableUniqueId);
+      top.layui.admin.refreshThis()
     }
   }
 })

@@ -22,7 +22,7 @@ return [
     | 500, All failed responses return a 500 status code
     */
 
-    'error_code' => false,
+    'error_code' => 200,
 
     // You can use enumerations to define the code when the response is returned,
     // and set the response message according to the locale

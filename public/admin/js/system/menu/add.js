@@ -19,7 +19,6 @@ layui.use(['form', 'http', 'popup', 'context', 'icon','dtree'], function () {
       this.fetchMenuTypeOptions();
       this.fetchMenuOpenTypeOptions();
       this.fetchMenuTree();
-      this.fetchMenu()
     },
     fetchMenuTypeOptions: function () {
       http.ajax({
@@ -29,6 +28,26 @@ layui.use(['form', 'http', 'popup', 'context', 'icon','dtree'], function () {
           if (response.status === 'success') {
             layui.each(response.data, function (key, item) {
               layui.$('#type').append(new Option(item.name, item.value))
+              form.render('select')
+            });
+          } else {
+            popup.failure(response.message);
+          }
+        },
+        error: function (e, code) {
+          http.ajax.logError(e)
+        }
+      })
+    },
+    fetchMenuOpenTypeOptions: function () {
+      http.ajax({
+        url: '/api/options/menuOpenType',
+        type: 'get',
+        success: function (response) {
+          if (response.status === 'success') {
+            layui.each(response.data, function (key, item) {
+              // 渲染下拉单选
+              layui.$('#open_type').append(new Option(item.name, item.value))
               form.render('select')
             });
           } else {
@@ -50,59 +69,7 @@ layui.use(['form', 'http', 'popup', 'context', 'icon','dtree'], function () {
         dataStyle:"layuiStyle",
       });
     },
-    fetchMenuOpenTypeOptions: function () {
-      http.ajax({
-        url: '/api/options/menuOpenType',
-        type: 'get',
-        success: function (response) {
-          if (response.status === 'success') {
-            layui.each(response.data, function (key, item) {
-              layui.$('#open_type').append(new Option(item.name, item.value))
-              form.render('select')
-            });
-          } else {
-            popup.failure(response.message);
-          }
-        },
-        error: function (e, code) {
-          http.ajax.logError(e)
-        }
-      })
-    },
-    fetchMenu: function () {
-      http.ajax({
-        url: '/api/menus/' + layadmin.request.id,
-        type: 'get',
-        success: function (response) {
-          if (response.status === 'success') {
-            let data = response.data
-
-            form.val('system-menu-edit', {
-              title: data.title,
-              icon: data.icon,
-              type: data.type,
-              href: data.href,
-              open_type: data.openType,
-              sort: data.sort,
-            })
-
-            if (data.type == 1) {
-              layui.$("div[data-id=p_id]").toggleClass('layui-hide');
-              layui.$("div[data-id=icon]").toggleClass('layui-hide');
-              layui.$("div[data-id=href]").toggleClass('layui-hide');
-              layui.$("div[data-id=open_type]").toggleClass('layui-hide');
-            }
-
-          } else {
-            popup.failure(response.message);
-          }
-        },
-        error: function (e, code) {
-          http.ajax.logError(e)
-        }
-      })
-    },
-    updateMenu: function (data) {
+    addMenu: function (data) {
       let reqData = {
         title:data.field.title,
         type:data.field.type,
@@ -114,14 +81,12 @@ layui.use(['form', 'http', 'popup', 'context', 'icon','dtree'], function () {
       }
 
       http.ajax({
-        url: '/api/menus/' + layadmin.request.id,
+        url: '/api/menus',
         data: JSON.stringify(reqData),
-        type: 'put',
         success: function (response) {
           if (response.status === 'success') {
             popup.success(response.message, function () {
               parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-              // parent.layui.table.reload("system-menu-index");
               top.layui.admin.refreshThis()
             });
           } else {
@@ -138,8 +103,8 @@ layui.use(['form', 'http', 'popup', 'context', 'icon','dtree'], function () {
   actions.setup();
 
   // 事件监听
-  form.on('submit(system-menu-edit-submit)', function (data) {
-    actions.updateMenu(data)
+  form.on('submit(system-menu-add-submit)', function (data) {
+    actions.addMenu(data)
   });
 
   form.on('select(type)', function (data) {

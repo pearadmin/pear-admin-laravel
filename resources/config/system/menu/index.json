@@ -39,7 +39,7 @@
           [
             {
               "field": "id",
-              "title": "Id",
+              "title": "ID",
               "width": 80
             },
             {
@@ -53,11 +53,12 @@
             },
             {
               "field": "type",
-              "title": "类型"
+              "title": "类型",
+              "templet": "#system-menu-index-type"
             },
             {
               "field": "href",
-              "title": "href"
+              "title": "路径"
             },
             {
               "field": "open_type",
